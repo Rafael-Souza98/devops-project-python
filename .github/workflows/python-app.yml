@@ -30,6 +30,12 @@ jobs:
       - name: Run tests
         run: make test
 
+      - name: Notifica o n8n
+        run: |
+          curl -X POST https://n8n.seuservidor.com/webhook/github-build \
+          -H "Content-Type: application/json" \
+          -d '{"repository": "${{ github.repository }}", "status": "${{ job.status }}", "commit": "${{ github.sha }}"}'
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
