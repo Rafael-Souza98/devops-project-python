@@ -32,7 +32,7 @@ jobs:
 
       - name: Notifica o n8n
         run: |
-          curl -X POST https://n8n.seuservidor.com/webhook/github-build \
+          curl -X POST http://wondrous-seasnail-wired.ngrok-free.app//webhook-test/github-build  \
           -H "Content-Type: application/json" \
           -d '{"repository": "${{ github.repository }}", "status": "${{ job.status }}", "commit": "${{ github.sha }}"}'
 
